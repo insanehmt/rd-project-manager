@@ -8,9 +8,9 @@
 
 ## 簡介 / Introduction
 
-**中文：** 這是一個 AI Agent Skill，讓 GitHub Copilot、Claude Code 等 AI 助理扮演「R&D 專案文件管理員」的角色。每次修程式碼、新增功能、修 Bug，它會自動同步更新 SPEC、IssueList、ReleaseNote、雙語 UserGuide，讓文件永遠不落後於程式碼。
+**中文：** 這是一個 AI Agent Skill，讓 GitHub Copilot、Claude Code、Codex、Trae、openclaw 等 AI 助理扮演「R&D 專案文件管理員」的角色。每次修程式碼、新增功能、修 Bug，它會自動同步更新 SPEC、IssueList、ReleaseNote、雙語 UserGuide，讓文件永遠不落後於程式碼。
 
-**English:** An AI agent skill that turns your AI assistant (GitHub Copilot, Claude Code, etc.) into an R&D project document manager. Every code change, new feature, or bug fix is automatically reflected across SPEC, IssueList, ReleaseNote, and bilingual UserGuides — documents always stay in sync with code.
+**English:** An AI agent skill that turns your AI assistant (GitHub Copilot, Claude Code, Codex, Trae, openclaw, etc.) into an R&D project document manager. Every code change, new feature, or bug fix is automatically reflected across SPEC, IssueList, ReleaseNote, and bilingual UserGuides — documents always stay in sync with code.
 
 ---
 
@@ -33,6 +33,9 @@ Copy `skills/rd-project-manager/` into your agent's skills folder:
 | GitHub Copilot | `~/.copilot/skills/` |
 | Claude Code | `~/.claude/skills/` |
 | Cursor | `~/.cursor/skills/` |
+| Codex | `~/.codex/skills/` |
+| Trae | `~/.trae/skills/` |
+| openclaw | `~/.openclaw/skills/` |
 
 ---
 
@@ -135,7 +138,7 @@ pip install python-docx
 
 ## 版本 / Version
 
-`1.0.0` — 2026-06-04
+`1.0.1` — 2026-06-08
 
 ---
 
