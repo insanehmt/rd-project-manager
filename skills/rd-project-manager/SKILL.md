@@ -52,6 +52,9 @@ To find `<SKILL_INSTALL_PATH>`, check:
 - GitHub Copilot: `~/.copilot/skills/rd-project-manager/`
 - Claude Code: `~/.claude/skills/rd-project-manager/`
 - Cursor: `~/.cursor/skills/rd-project-manager/`
+- Codex: `~/.codex/skills/rd-project-manager/`
+- Trae: `~/.trae/skills/rd-project-manager/`
+- openclaw: `~/.openclaw/skills/rd-project-manager/`
 
 **Source code** may live anywhere in or under the project folder (or in a separate repo path — user will tell you).
 
