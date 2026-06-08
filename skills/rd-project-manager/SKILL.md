@@ -404,7 +404,11 @@ Get-ChildItem "<PROJECT_DIR>\ReferData\" -Recurse
 
 **5c. Update `<ProjectName>_SPEC.txt` with extracted information:**
 
-- `[1. OVERVIEW]` — Fill `Purpose` and `Scope` from reference materials
+- `[1. OVERVIEW]` — Fill `Purpose`, `Scope`, and `Platform` from reference materials; always set `Code Repo` field to:
+  ```
+  Code Repo : 專案程式碼以 Git 格式存放於 CodeRepo\ 資料夾下
+              (Project source code is managed with Git, located in CodeRepo\)
+  ```
 - `[2. FEATURES]` — Add feature rows extracted from reference docs
 - `[5. DEPENDENCIES]` — List reference files as source references:
   ```

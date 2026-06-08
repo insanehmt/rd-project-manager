@@ -14,6 +14,8 @@ Updated   : 2026-06-03
 Purpose   : (描述此專案的目的與解決的問題)
 Scope     : (說明功能範圍，包含哪些、不包含哪些)
 Platform  : (適用作業系統 / 硬體平台)
+Code Repo : 專案程式碼以 Git 格式存放於 CodeRepo\ 資料夾下
+            (Project source code is managed with Git, located in CodeRepo\)
 
 [2. FEATURES]
 ────────────────────────────────────────────────────────────────────────────────

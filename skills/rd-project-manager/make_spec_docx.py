@@ -294,9 +294,10 @@ def main():
     h1(doc, '1.  Overview')
     sep(doc)
     for label, placeholder in [
-        ('Purpose',  get_field('Purpose',  raw) or '（描述此專案的目的與解決的問題）'),
-        ('Scope',    get_field('Scope',    raw) or '（說明功能範圍，包含哪些、不包含哪些）'),
-        ('Platform', get_field('Platform', raw) or '（適用作業系統 / 硬體平台）'),
+        ('Purpose',   get_field('Purpose',   raw) or '（描述此專案的目的與解決的問題）'),
+        ('Scope',     get_field('Scope',     raw) or '（說明功能範圍，包含哪些、不包含哪些）'),
+        ('Platform',  get_field('Platform',  raw) or '（適用作業系統 / 硬體平台）'),
+        ('Code Repo', get_field('Code Repo', raw) or '專案程式碼以 Git 格式存放於 CodeRepo\\ 資料夾下'),
     ]:
         kv(doc, label, placeholder)
 
