@@ -23,11 +23,13 @@ Every project lives under a single folder. The files follow a **dual-format** st
 ├── <ProjectName>_ReleaseNote.txt   ← 版本發行說明 (plain text)
 ├── UserGuide_En.md                 ← 英文使用手冊 (Markdown)
 ├── UserGuide_Zh.md                 ← 中文使用手冊 (Markdown)
-└── ReferData\                      ← 專案參考資料資料夾 (reference materials)
-    ├── (參考文件 / reference documents)
-    ├── (參考照片 / reference photos)
-    ├── (參考 SPEC / reference specs)
-    └── (其他參考資料 / other reference materials)
+├── ReferData\                      ← 專案參考資料資料夾 (reference materials)
+│   ├── (參考文件 / reference documents)
+│   ├── (參考照片 / reference photos)
+│   ├── (參考 SPEC / reference specs)
+│   └── (其他參考資料 / other reference materials)
+└── CodeRepo\                       ← 專案程式碼 Git 儲存庫 (project source code)
+    └── .git\  (git init or git clone here)
 ```
 
 ### ReferData Folder
@@ -41,10 +43,20 @@ Every project lives under a single folder. The files follow a **dual-format** st
 | 參考 SPEC | Competitor specs, standard documents, prior-version specs |
 | 其他參考資料 | Email threads, meeting notes, datasheet PDFs |
 
+### CodeRepo Folder
+
+`CodeRepo\` is the dedicated folder for the **project's Git source code repository**.
+
+| Item | Description |
+|------|-------------|
+| Git repo | `git clone <url> .` or `git init` inside `CodeRepo\` |
+| Source files | All `.py`, `.c`, `.js`, etc. live here |
+| Code paths in SPEC | Use paths relative to `CodeRepo\`, e.g. `CodeRepo\src\main.py` |
+
 **Rules:**
-- The skill will **never modify or delete** files in `ReferData\`
-- When initializing a new project, **always create** the `ReferData\` folder (empty)
-- Files in `ReferData\` can be referenced in IssueList or SPEC entries by filename
+- When the skill reads or modifies source code, it looks in `CodeRepo\` first
+- Issue entries in IssueList should reference files as `CodeRepo\<relative_path>`
+- The skill treats `CodeRepo\` as the working directory for all code-related operations
 
 ### Dual-Format Strategy (TXT → Word)
 
@@ -351,7 +363,8 @@ Print a concise table:
             ├── rd-project-manager_ReleaseNote.txt
             ├── UserGuide_En.md
             ├── UserGuide_Zh.md
-            └── ReferData\             ← empty, ready for reference materials
+            ├── ReferData\             ← empty, ready for reference materials
+            └── CodeRepo\              ← empty, ready for git clone/init
 ```
 
 ### Steps
@@ -365,6 +378,7 @@ Print a concise table:
    - `UserGuide_En.md`
    - `UserGuide_Zh.md`
 4. Create an empty `ReferData\` subfolder for reference materials
+5. Create an empty `CodeRepo\` subfolder for the project Git repository
 
 Use the templates from the `sample/` folder in this skill repository as reference format.
 Replace "ProjectName" with `<ProjectName>` and today's date.
@@ -405,7 +419,7 @@ Get-ChildItem "<PROJECT_DIR>\ReferData\" -Recurse
 ```
 ✅ Init Complete — Project_<ProjectName>
    Project folder : <path>\Project_<ProjectName>\
-   Files created  : 5 template files + ReferData\
+   Files created  : 5 template files + ReferData\ + CodeRepo\
    ReferData scan : <N> files found
    SPEC populated : Purpose, Scope, <M> features extracted from references
    

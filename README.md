@@ -52,7 +52,9 @@ Copy `skills/rd-project-manager/` into your agent's skills folder:
 ├── <ProjectName>_IssueList.txt     ← Issue tracking (plain text)
 ├── <ProjectName>_ReleaseNote.txt   ← Release notes (plain text)
 ├── UserGuide_En.md                 ← English user guide
-└── UserGuide_Zh.md                 ← 中文使用手冊
+├── UserGuide_Zh.md                 ← 中文使用手冊
+├── ReferData\                      ← Reference materials (docs, photos, specs)
+└── CodeRepo\                       ← Project source code (git repo)
 ```
 
 ### 觸發指令 / Trigger Commands
@@ -94,7 +96,7 @@ python skills/rd-project-manager/make_spec_docx.py \
 /rdpm init C:\MyWork MyProject
 ```
 
-This creates the folder `C:\MyWork\Project_MyProject\` and populates it with all 5 template files:
+This creates the folder `C:\MyWork\Project_MyProject\` and populates it with all files:
 
 ```
 C:\MyWork\Project_MyProject\
@@ -102,7 +104,9 @@ C:\MyWork\Project_MyProject\
 ├── MyProject_IssueList.txt
 ├── MyProject_ReleaseNote.txt
 ├── UserGuide_En.md
-└── UserGuide_Zh.md
+├── UserGuide_Zh.md
+├── ReferData\             ← place reference docs/photos here
+└── CodeRepo\              ← git clone or init your code here
 ```
 
 ### 2. 修 Bug / Fix a bug
