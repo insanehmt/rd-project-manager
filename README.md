@@ -131,7 +131,13 @@ See the [`sample/`](./sample/) folder for a complete template project with all 5
 The `make_spec_docx.py` script requires:
 
 ```bash
-pip install python-docx
+pip install -r skills/rd-project-manager/requirements.txt
+```
+
+Or manually:
+
+```bash
+pip install "python-docx>=1.1.0,<2.0.0"
 ```
 
 ---

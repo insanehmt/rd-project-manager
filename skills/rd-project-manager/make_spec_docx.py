@@ -14,6 +14,7 @@ import os
 import re
 import argparse
 import datetime
+import pathlib
 
 from docx import Document
 from docx.shared import Pt, RGBColor, Cm
@@ -206,12 +207,21 @@ def get_field(key, text):
     return m.group(1).strip() if m else ''
 
 
+def safe_project_name(name: str) -> str:
+    """Reject path traversal sequences and illegal filename characters."""
+    illegal = ('/', '\\', '..', ':', '*', '?', '<', '>', '|', '\0')
+    if any(c in name for c in illegal):
+        raise ValueError(f"Invalid project name contains illegal characters: {name!r}")
+    return name
+
+
 # ── Main ───────────────────────────────────────────────────────────────────────
 def main():
     args = parse_args()
 
-    project_dir  = args.project_dir
-    project_name = args.project_name
+    # Normalize and validate inputs to prevent path traversal
+    project_dir  = str(pathlib.Path(args.project_dir).resolve())
+    project_name = safe_project_name(args.project_name)
     txt_path     = os.path.join(project_dir, f"{project_name}_SPEC.txt")
     out_path     = args.output or os.path.join(project_dir, f"{project_name}_SPEC.docx")
 
