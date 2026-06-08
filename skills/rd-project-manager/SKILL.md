@@ -22,8 +22,29 @@ Every project lives under a single folder. The files follow a **dual-format** st
 ├── <ProjectName>_IssueList.txt     ← Issue 追蹤 (plain text, always editable)
 ├── <ProjectName>_ReleaseNote.txt   ← 版本發行說明 (plain text)
 ├── UserGuide_En.md                 ← 英文使用手冊 (Markdown)
-└── UserGuide_Zh.md                 ← 中文使用手冊 (Markdown)
+├── UserGuide_Zh.md                 ← 中文使用手冊 (Markdown)
+└── ReferData\                      ← 專案參考資料資料夾 (reference materials)
+    ├── (參考文件 / reference documents)
+    ├── (參考照片 / reference photos)
+    ├── (參考 SPEC / reference specs)
+    └── (其他參考資料 / other reference materials)
 ```
+
+### ReferData Folder
+
+`ReferData\` is the dedicated folder for all **read-only reference materials** used during development. It is **not** managed or modified by the skill — it is maintained by the developer.
+
+| Content Type | Examples |
+|---|---|
+| 參考文件 | PDF, Word, TXT specs from customers or vendors |
+| 參考照片 | Screenshots, diagrams, UI mockups, hardware photos |
+| 參考 SPEC | Competitor specs, standard documents, prior-version specs |
+| 其他參考資料 | Email threads, meeting notes, datasheet PDFs |
+
+**Rules:**
+- The skill will **never modify or delete** files in `ReferData\`
+- When initializing a new project, **always create** the `ReferData\` folder (empty)
+- Files in `ReferData\` can be referenced in IssueList or SPEC entries by filename
 
 ### Dual-Format Strategy (TXT → Word)
 
@@ -71,6 +92,7 @@ To find `<SKILL_INSTALL_PATH>`, check:
 | `export spec` / `generate word` / `/rdpm export-spec` | → **Export SPEC TXT → DOCX** |
 | `/rdpm status`                               | → **Status Report**           |
 | `/rdpm init <path> <ProjectName>`            | → **Init Flow**               |
+| `/rdpm scan-refer`                           | → **ReferData Scan & SPEC update** |
 
 ---
 
@@ -328,7 +350,8 @@ Print a concise table:
             ├── rd-project-manager_IssueList.txt
             ├── rd-project-manager_ReleaseNote.txt
             ├── UserGuide_En.md
-            └── UserGuide_Zh.md
+            ├── UserGuide_Zh.md
+            └── ReferData\             ← empty, ready for reference materials
 ```
 
 ### Steps
@@ -341,9 +364,66 @@ Print a concise table:
    - `<ProjectName>_ReleaseNote.txt`
    - `UserGuide_En.md`
    - `UserGuide_Zh.md`
+4. Create an empty `ReferData\` subfolder for reference materials
 
 Use the templates from the `sample/` folder in this skill repository as reference format.
 Replace "ProjectName" with `<ProjectName>` and today's date.
+
+### Step 5 — ReferData Scan & SPEC Population
+
+After creating all files, **immediately scan the `ReferData\` folder** and update the SPEC:
+
+**5a. List all files in `ReferData\`:**
+```
+Get-ChildItem "<PROJECT_DIR>\ReferData\" -Recurse
+```
+
+**5b. For each file found, read and extract relevant information:**
+
+| File Type | Extraction Action |
+|-----------|-------------------|
+| `.txt` / `.md` | Read full content, extract key requirements, features, specs |
+| `.pdf` | Read if possible; otherwise note filename and ask user for summary |
+| `.docx` / `.xlsx` | Read if possible; extract tables, feature lists, requirements |
+| Image (`.png`, `.jpg`, etc.) | Note filename; ask user: "What does `<filename>` show?" |
+| Other | Note filename and type in SPEC Dependencies section |
+
+**5c. Update `<ProjectName>_SPEC.txt` with extracted information:**
+
+- `[1. OVERVIEW]` — Fill `Purpose` and `Scope` from reference materials
+- `[2. FEATURES]` — Add feature rows extracted from reference docs
+- `[5. DEPENDENCIES]` — List reference files as source references:
+  ```
+  ReferData\<filename> | — | 參考來源文件
+  ```
+- `[6. CHANGE LOG]` — Add initial entry:
+  ```
+  0.1.0 | <today> | Copilot | Initial SPEC drafted from ReferData\ references
+  ```
+
+**5d. Confirm to user:**
+```
+✅ Init Complete — Project_<ProjectName>
+   Project folder : <path>\Project_<ProjectName>\
+   Files created  : 5 template files + ReferData\
+   ReferData scan : <N> files found
+   SPEC populated : Purpose, Scope, <M> features extracted from references
+   
+   ⚠️  Please review <ProjectName>_SPEC.txt and verify all extracted content.
+```
+
+**If `ReferData\` is empty at init time:**
+- Create files with blank templates as usual
+- Add a note at the top of SPEC.txt:
+  ```
+  [NOTE] ReferData\ is empty. Add reference materials and run /rdpm scan-refer to populate SPEC.
+  ```
+
+### Trigger: `/rdpm scan-refer`
+
+If the user runs `/rdpm scan-refer` after adding files to `ReferData\` later:
+- Re-scan `ReferData\` and update SPEC with any new information found
+- Do NOT overwrite existing SPEC content — only **append** new features/info not already present
 
 ---
 
