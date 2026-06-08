@@ -91,10 +91,19 @@ python skills/rd-project-manager/make_spec_docx.py \
 ### 1. 建立新專案 / Initialize a new project
 
 ```
-/rdpm init C:\MyProject MyProject
+/rdpm init C:\MyWork MyProject
 ```
 
-This creates all 5 template files in `C:\MyProject\`.
+This creates the folder `C:\MyWork\Project_MyProject\` and populates it with all 5 template files:
+
+```
+C:\MyWork\Project_MyProject\
+├── MyProject_SPEC.txt
+├── MyProject_IssueList.txt
+├── MyProject_ReleaseNote.txt
+├── UserGuide_En.md
+└── UserGuide_Zh.md
+```
 
 ### 2. 修 Bug / Fix a bug
 

@@ -306,13 +306,41 @@ Print a concise table:
 
 ## Init Flow — `/rdpm init <path> <ProjectName>`
 
-Create the 5 template files in `<path>\`:
+### Folder Naming Rule
 
-1. `<ProjectName>_SPEC.txt`
-2. `<ProjectName>_IssueList.txt`
-3. `<ProjectName>_ReleaseNote.txt`
-4. `UserGuide_En.md`
-5. `UserGuide_Zh.md`
+**Always** create the project under a subfolder named `Project_<ProjectName>` inside `<path>`.
+
+```
+<path>\
+└── Project_<ProjectName>\       ← folder auto-created with this name
+    ├── <ProjectName>_SPEC.txt
+    ├── <ProjectName>_IssueList.txt
+    ├── <ProjectName>_ReleaseNote.txt
+    ├── UserGuide_En.md
+    └── UserGuide_Zh.md
+```
+
+**Example:**
+```
+/rdpm init C:\MyWork rd-project-manager
+→ Creates: C:\MyWork\Project_rd-project-manager\
+            ├── rd-project-manager_SPEC.txt
+            ├── rd-project-manager_IssueList.txt
+            ├── rd-project-manager_ReleaseNote.txt
+            ├── UserGuide_En.md
+            └── UserGuide_Zh.md
+```
+
+### Steps
+
+1. Construct the project directory path: `<path>\Project_<ProjectName>`
+2. Create the directory if it does not already exist
+3. Create the 5 template files inside it:
+   - `<ProjectName>_SPEC.txt`
+   - `<ProjectName>_IssueList.txt`
+   - `<ProjectName>_ReleaseNote.txt`
+   - `UserGuide_En.md`
+   - `UserGuide_Zh.md`
 
 Use the templates from the `sample/` folder in this skill repository as reference format.
 Replace "ProjectName" with `<ProjectName>` and today's date.
