@@ -1,0 +1,34 @@
+================================================================================
+  RELEASE NOTE
+================================================================================
+Project   : Project_Sample
+================================================================================
+
+[VERSION 0.1.0]  (2026-06-03)
+────────────────────────────────────────────────────────────────────────────────
+Type      : Initial Release
+Author    : Steven Huang
+
+  [New Features]
+    - Initial project structure created
+    - SPEC, IssueList, ReleaseNote, UserGuide (EN/ZH) templates established
+
+  [Bug Fixes]
+    - N/A
+
+  [Known Issues]
+    - See Project_Sample_IssueList.txt
+
+  [SPEC Changes]
+    - v0.1.0 初始版本建立
+
+================================================================================
+
+[HOW TO READ]
+  Each release entry contains:
+    ● New Features  — 新增功能
+    ● Bug Fixes     — 修正的 Issue (格式: ISS-XXX: 說明)
+    ● SPEC Changes  — 對應 SPEC 的哪些章節有更新
+    ● Known Issues  — 此版本仍存在的已知問題
+
+================================================================================

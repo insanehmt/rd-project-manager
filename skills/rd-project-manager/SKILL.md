@@ -187,8 +187,7 @@ Fix Note : (一句話說明修了什麼)
 Move the full entry block from `OPEN ISSUES` section to `FIXED ISSUES` section.
 
 **3b. Update the QUICK OPEN LIST table (at top of file):**
-- Change the Status column from `FIX IT` → `FIXED` for the resolved issue
-- If issue is moved to FIXED/CLOSED, remove it from the Quick Open List entirely
+- Remove the issue row entirely (Quick Open List only shows OPEN + FIX IT issues; FIXED/CLOSED rows are removed)
 - Re-number the `#` column so it stays sequential
 
 ### Step F-4: Update SPEC.txt
@@ -383,7 +382,7 @@ Print a concise table:
 Use the templates from the `sample/` folder in this skill repository as reference format.
 Replace "ProjectName" with `<ProjectName>` and today's date.
 
-### Step 5 — ReferData Scan & SPEC Population
+### Step 6 — ReferData Scan & SPEC Population
 
 After creating all files, **immediately scan the `ReferData\` folder** and update the SPEC:
 
